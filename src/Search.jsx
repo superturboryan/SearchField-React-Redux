@@ -18,7 +18,7 @@ class UnconnectedSearch extends Component {
    }
 
    handleMaximumPrice = evt => {
-      if (event.target.value === "") {
+      if (event.target.value === "" || event.target.value === NaN) {
          this.props.dispatch({ type: 'minimum-price', price: 0 })
          return;
       }
@@ -37,6 +37,14 @@ class UnconnectedSearch extends Component {
       this.props.dispatch({ type: "clear-fields" })
    }
 
+   showHideField = () => {
+      let minPrice = document.getElementById("minPrice")
+      let maxPrice = document.getElementById("maxPrice")
+
+      minPrice.classList.toggle("hidden")
+      maxPrice.classList.toggle("hidden")
+   }
+
    render = () => {
       return (
          <div>
@@ -44,11 +52,12 @@ class UnconnectedSearch extends Component {
                Search query
                <input type="text" onChange={this.handleQuery} value={this.props.query} />
             </div>
-            <div>
+            <button onClick={this.showHideField}> Show/Hide Price </button>
+            <div id="minPrice">
                Minimum price
                <input type="text" onChange={this.handleMinimumPrice} value={this.props.minPrice} />
             </div>
-            <div>
+            <div id="maxPrice">
                Maximum price
                <input type="text" onChange={this.handleMaximumPrice} value={this.props.maxPrice} />
             </div>
