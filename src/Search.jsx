@@ -9,7 +9,7 @@ class UnconnectedSearch extends Component {
 
    handleMinimumPrice = evt => {
       //Check if user has cleared the string, it must remain a number!
-      if (event.target.value === "") {
+      if (event.target.value === "" || event.target.value === NaN) {
          this.props.dispatch({ type: 'minimum-price', price: 0 })
          return;
       }

@@ -1,4 +1,7 @@
 import { createStore } from "redux"
+
+let defaultState = { searchQuery: "", min: 0, max: 100000, inStock: false }
+
 let reducer = (state, action) => {
 
    if (action.type === "query") {
@@ -18,7 +21,7 @@ let reducer = (state, action) => {
    }
 
    if (action.type === "clear-fields") {
-      return { searchQuery: "", min: 0, max: 100000, inStock: false }
+      return defaultState
    }
 
    return state
@@ -26,7 +29,7 @@ let reducer = (state, action) => {
 
 const store = createStore(
    reducer,
-   { searchQuery: "", min: 0, max: 100000, inStock: false },
+   defaultState,
    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 
