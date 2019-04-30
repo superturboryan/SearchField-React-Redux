@@ -18,8 +18,19 @@ class UnconnectedSearch extends Component {
    }
 
    handleMaximumPrice = evt => {
+      if (event.target.value === "") {
+         this.props.dispatch({ type: 'minimum-price', price: 0 })
+         return;
+      }
       let price = parseInt(evt.target.value)
       this.props.dispatch({ type: 'maximum-price', price: price })
+   }
+
+   handleInStock = event => {
+      if (event.target.value === "on") {
+         this.props.dispatch({ type: 'change-instock' })
+         // console.log("Event recognized!")
+      }
    }
 
    render = () => {
@@ -37,6 +48,10 @@ class UnconnectedSearch extends Component {
                Maximum price
                <input type="text" onChange={this.handleMaximumPrice} value={this.props.maxPrice} />
             </div>
+            <div>
+               Out of stock items?
+               <input type="checkbox" onChange={this.handleInStock} />
+            </div>
          </div>)
    }
 
@@ -46,7 +61,8 @@ let mapStateToProps = st => {
    return {
       query: st.searchQuery,
       minPrice: st.min,
-      maxPrice: st.max
+      maxPrice: st.max,
+      inStock: st.inStock
    }
 }
 
