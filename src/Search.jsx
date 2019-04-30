@@ -33,6 +33,10 @@ class UnconnectedSearch extends Component {
       }
    }
 
+   handleClearFields = () => {
+      this.props.dispatch({ type: "clear-fields" })
+   }
+
    render = () => {
       return (
          <div>
@@ -49,9 +53,10 @@ class UnconnectedSearch extends Component {
                <input type="text" onChange={this.handleMaximumPrice} value={this.props.maxPrice} />
             </div>
             <div>
-               Out of stock items?
-               <input type="checkbox" onChange={this.handleInStock} />
+               In stock only?
+               <input type="checkbox" onChange={this.handleInStock} checked={this.props.inStock} />
             </div>
+            <button onClick={this.handleClearFields}>Clear!</button>
          </div>)
    }
 
