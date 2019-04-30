@@ -3,7 +3,9 @@ import React, { Component } from 'react'
 import data from './data.js'
 
 class UnconnectedSearchResults extends Component {
+
    render = () => {
+
       let results = data.filter(item => {
          return item.name.includes(this.props.query)
       })
@@ -45,5 +47,6 @@ let mapStateToProps = st => {
       inStock: st.inStock
    }
 }
+
 let SearchResults = connect(mapStateToProps)(UnconnectedSearchResults)
 export default SearchResults  

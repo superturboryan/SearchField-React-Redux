@@ -53,11 +53,11 @@ class UnconnectedSearch extends Component {
                <input type="text" onChange={this.handleQuery} value={this.props.query} />
             </div>
             <button onClick={this.showHideField}> Show/Hide Price </button>
-            <div id="minPrice">
+            <div id="minPrice" className="hidden">
                Minimum price
                <input type="text" onChange={this.handleMinimumPrice} value={this.props.minPrice} />
             </div>
-            <div id="maxPrice">
+            <div id="maxPrice" className="hidden">
                Maximum price
                <input type="text" onChange={this.handleMaximumPrice} value={this.props.maxPrice} />
             </div>

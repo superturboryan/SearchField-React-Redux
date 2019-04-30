@@ -9,7 +9,7 @@ let items = [{
    price: 200,
    name: "gucci hat",
    description: "nicest hat",
-   inStock: true
+   inStock: false
 }, {
    id: "ab23s",
    price: 20000,
